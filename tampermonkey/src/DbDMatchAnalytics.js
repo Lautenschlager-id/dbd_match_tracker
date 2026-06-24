@@ -255,7 +255,7 @@ class DbDMatchAnalytics {
 			return {
 				name, ...obj,
 				topKillerName: sortedKillers[0]?.[0] || null,
-				topKillerCount: sortedKillers[0]?.[1] || 0,
+				topKillerCount: sortedKillers[0]?.[1].count || 0,
 				killerList: sortedKillers.map(([kName, data]) => ({ name: kName, ...data })),
 				percentage: calcPercent(obj.count, stats.totalKillerGames)
 			};

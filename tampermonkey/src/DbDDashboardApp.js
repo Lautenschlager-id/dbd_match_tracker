@@ -229,46 +229,6 @@ const StyleInjector = {
 				color: #94a3b8;
 			}
 
-			.custom-view-all-killers-btn {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				gap: 6px;
-
-				height: 32px;
-				padding: 0 12px;
-
-				border-radius: 4px;
-
-				background: rgba(255, 255, 255, .04);
-				border: 1px solid rgba(255, 255, 255, .08);
-
-				color: #cbd5e1;
-
-				font-size: 13px;
-				font-weight: 700;
-				text-transform: uppercase;
-				letter-spacing: .04em;
-
-				cursor: pointer;
-
-				transition:
-					background .18s ease,
-					border-color .18s ease,
-					color .18s ease,
-					transform .18s ease;
-			}
-
-			.custom-view-all-killers-btn:hover {
-				background: rgba(255, 0, 85, .12);
-				border-color: rgba(255, 0, 85, .35);
-				color: #ffffff;
-			}
-
-			.custom-view-all-killers-btn:active {
-				transform: translateY(1px);
-			}
-
 			.modal-overlay {
 				position: fixed;
 				inset: 0;

@@ -102,7 +102,7 @@ Gain deep tactical insight into your opponents with specialized matchmaking data
 * **Core Matchup Metrics:** View total **Matches Faced**, overall **Encounter Rate**, and **Your Escape Rate**.
 * **Expandable Deep-Dives:** Expand any killer's row to reveal precise win/loss metrics and your **Most Frequent Map Encounter** against that specific threat.
 
-<img width="1515" height="660" alt="image" src="https://github.com/user-attachments/assets/630bbf69-0dce-4307-8993-e046d6f70e64" />
+<img width="1516" height="489" alt="image" src="https://github.com/user-attachments/assets/cd90985d-74bc-4be9-b6cb-1cf91a93f4a4" />
 
 ---
 
@@ -112,14 +112,14 @@ An advanced map-tracking system that changes context depending on your selected 
 **Survivor Perspective**<br>
 Ranks maps by your frequency of appearance, offering data on overall rotation appearance share and your corresponding survival rate on that trial ground.
 
-<img width="1518" height="437" alt="image" src="https://github.com/user-attachments/assets/ac62b0db-1f7a-4cab-957d-3cf2f531b2a2" />
+<img width="1516" height="633" alt="image" src="https://github.com/user-attachments/assets/74571406-14df-4014-a497-46bbf4ab6c67" />
 
 **Killer Perspective**<br>
 Toggles to display performance metrics when you play as the killer. This calculates your raw **Kill Rate**, tracks **Merciless Victories (4K)**, and notes which killer character you deploy most frequently on that specific map.
 
-<img width="1516" height="558" alt="image" src="https://github.com/user-attachments/assets/b147c304-27fe-4538-91af-6b69b54e57ab" />
+<img width="1516" height="614" alt="image" src="https://github.com/user-attachments/assets/d74df5f4-de13-482c-ab1c-c66851c8f712" />
 
 **Killer Composition Details**<br>
-By clicking the "View All Killers" button on any Killer map panel, you can open a detailed modal breaking down the exact distribution and match count of every killer you've played on that particular realm.
+By clicking the "Most Frequent Killers" button on any Killer map panel, you can open a detailed modal breaking down the exact distribution and match count of every killer you've played on that particular realm.
 
 <img width="974" height="795" alt="image" src="https://github.com/user-attachments/assets/dd14ede6-13fb-48e5-b490-858a49390486" />

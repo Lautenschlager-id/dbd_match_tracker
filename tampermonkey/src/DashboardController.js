@@ -36,16 +36,16 @@ const DashboardViews = {
 			</div>
 			<div class="flex bg-surface-black/40 rounded-xs p-0.5 border border-white/5 stop-propagation">
 				${KEYS_TIMEFRAME_DAYS.map(tf =>
-					`<button data-tf="${tf}" class="tf-tab-btn tf-trigger ${activeTimeframe === tf ? 'tf-active' : ''}">${tf}</button>`
-				).join('')}
+	`<button data-tf="${tf}" class="tf-tab-btn tf-trigger ${activeTimeframe === tf ? 'tf-active' : ''}">${tf}</button>`
+).join('')}
 			</div>
 		</header>
 	`,
 
-	SurvivorOutcomes: (stats) => {
-		const total = stats.escapes + stats.deaths;
-		const rate = total > 0 ? ((stats.escapes / total) * 100).toFixed(2) : "0.00";
-		return `
+SurvivorOutcomes: (stats) => {
+	const total = stats.escapes + stats.deaths;
+	const rate = total > 0 ? ((stats.escapes / total) * 100).toFixed(2) : "0.00";
+	return `
 			<div class="flex flex-col rounded-sm border border-primary-smoke-10/10 p-4 justify-between h-[120px] premium-survival-gradient">
 				<span class="text-xs font-semibold uppercase tracking-wider text-neutral-text-medium border-b border-primary-smoke-10/10 pb-2">Survivor Outcomes</span>
 				<div class="flex items-center justify-between mt-auto mb-auto w-full px-1">
@@ -55,9 +55,9 @@ const DashboardViews = {
 				</div>
 			</div>
 		`;
-	},
+},
 
-	KillerSectionHeader: (title, toggleId, arrowId, isExpanded) => `
+KillerSectionHeader: (title, toggleId, arrowId, isExpanded) => `
 		<header class="flex items-center gap-2 w-full cursor-pointer select-none border-b border-primary-smoke-10/10 pb-2 mb-2" id="${toggleId}-header">
 			<div class="flex items-center gap-3">
 				<svg id="${arrowId}" class="size-4 text-neutral-text-medium transition-transform duration-200 ${!isExpanded ? '-rotate-90' : ''}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
@@ -66,7 +66,7 @@ const DashboardViews = {
 		</header>
 	`,
 
-	MapSectionHeader: (title, toggleId, activeTab, isExpanded) => `
+MapSectionHeader: (title, toggleId, activeTab, isExpanded) => `
 		<header class="flex items-center justify-between gap-2 w-full cursor-pointer select-none border-b border-primary-smoke-10/10 pb-2 mb-2" id="${toggleId}-header">
 			<div class="flex items-center gap-2">
 				<svg id="unified-maps-arrow" class="size-4 text-neutral-text-medium transition-transform duration-200 ${!isExpanded ? '-rotate-90' : ''}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
@@ -132,11 +132,11 @@ class DashboardController {
 		
 		const isMapsTableTargetingSurvivor = this.state.preferences.filters.mapTab === 'SURVIVOR'
 		const mapsTableHtml = isMapsTableTargetingSurvivor
-			? this.tableCompiler.compile(stats.allSurvMaps, 'surv-map')
-			: this.tableCompiler.compile(stats.allKillerMaps, 'killer-map');
+		? this.tableCompiler.compile(stats.allSurvMaps, 'surv-map')
+		: this.tableCompiler.compile(stats.allKillerMaps, 'killer-map');
 		const mapTableGradient = isMapsTableTargetingSurvivor
-			? 'from-theme-blue-light/40 to-theme-blue-light/0'
-			: 'from-theme-red-light/20 to-theme-red-light/0';
+		? 'from-theme-blue-light/40 to-theme-blue-light/0'
+		: 'from-theme-red-light/20 to-theme-red-light/0';
 		
 		this.container.innerHTML = `
 			<section class="flex w-full flex-col gap-4 border border-primary-smoke-10/10 bg-surface-black/10 rounded-sm overflow-hidden transition-all shadow-xl">
@@ -157,7 +157,7 @@ class DashboardController {
 										<th class="font-medium flex items-center justify-end text-right text-display-xxs font-display px-4 last:pr-8 py-3" scope="col" colspan="2" style="grid-column: span 2 / span 2;">Your Escape Rate</th>
 									</tr>
 								</thead>
-								<tbody class="block h-auto w-full bg-transparent" style="grid-template-columns: repeat(12, 1fr);" tabindex="-1">
+								<tbody class="block h-auto w-full bg-transparent table-stripped" style="grid-template-columns: repeat(12, 1fr);" tabindex="-1">
 									${killersTableHtml}
 								</tbody>
 							</table>
@@ -176,7 +176,7 @@ class DashboardController {
 										<th class="font-medium flex items-center justify-end text-right text-display-xxs font-display px-4 last:pr-8 py-3" scope="col" colspan="2" style="grid-column: span 2 / span 2;">${isMapsTableTargetingSurvivor ? 'Your Escape Rate' : 'Your Kill Rate'}</th>
 									</tr>
 								</thead>
-								<tbody class="block h-auto w-full bg-transparent" style="grid-template-columns: repeat(12, 1fr);" tabindex="-1">
+								<tbody class="block h-auto w-full bg-transparent table-stripped" style="grid-template-columns: repeat(12, 1fr);" tabindex="-1">
 									${mapsTableHtml}
 								</tbody>
 							</table>
@@ -193,18 +193,30 @@ class DashboardController {
 	_bindTableInteractions(stats) {
 		this.container.querySelectorAll('.custom-grid-row-action').forEach(row => {
 			row.addEventListener('click', (e) => {
-				const rowId = row.getAttribute('data-row-id');
-				const subCard = this.container.querySelector(`[id="subcard-${rowId}"]`);
-				const arrowBtn = row.querySelector('.group\\/button');
+				const row = e.target.closest('.custom-grid-row-action');
+				if (!row) return;
 				
-				if (this.state.data.expandedRows.has(rowId)) {
-					this.state.data.expandedRows.delete(rowId);
-					if (subCard) subCard.style.setProperty('display', 'none', 'important');
-					if (arrowBtn) arrowBtn.classList.add('-rotate-90');
-				} else {
-					this.state.data.expandedRows.add(rowId);
-					if (subCard) subCard.style.removeProperty('display');
-					if (arrowBtn) arrowBtn.classList.remove('-rotate-90');
+				const rowId = row.dataset.rowId;
+				
+				const wrapper = this.container.querySelector(`#wrapper-${rowId}`);
+				const expandButton = row.querySelector('button[title="Expand"]');
+				
+				if (wrapper) {
+					const isHidden = wrapper.classList.contains('grid-rows-[0fr]');
+					
+					if (isHidden) {
+						wrapper.classList.remove('grid-rows-[0fr]', 'opacity-0');
+						wrapper.classList.add('grid-rows-[1fr]', 'opacity-100');
+						
+						if (expandButton) expandButton.classList.remove('-rotate-90');
+						this.tableCompiler.expandedDataRows.add(rowId);
+					} else {
+						wrapper.classList.remove('grid-rows-[1fr]', 'opacity-100');
+						wrapper.classList.add('grid-rows-[0fr]', 'opacity-0');
+						
+						if (expandButton) expandButton.classList.add('-rotate-90');
+						this.tableCompiler.expandedDataRows.delete(rowId);
+					}
 				}
 			});
 		});
