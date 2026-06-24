@@ -36,16 +36,16 @@ const DashboardViews = {
 			</div>
 			<div class="flex bg-surface-black/40 rounded-xs p-0.5 border border-white/5 stop-propagation">
 				${KEYS_TIMEFRAME_DAYS.map(tf =>
-	`<button data-tf="${tf}" class="tf-tab-btn tf-trigger ${activeTimeframe === tf ? 'tf-active' : ''}">${tf}</button>`
-).join('')}
+					`<button data-tf="${tf}" class="tf-tab-btn tf-trigger ${activeTimeframe === tf ? 'tf-active' : ''}">${tf}</button>`
+				).join('')}
 			</div>
 		</header>
 	`,
 
-SurvivorOutcomes: (stats) => {
-	const total = stats.escapes + stats.deaths;
-	const rate = total > 0 ? ((stats.escapes / total) * 100).toFixed(2) : "0.00";
-	return `
+	SurvivorOutcomes: (stats) => {
+		const total = stats.escapes + stats.deaths;
+		const rate = total > 0 ? ((stats.escapes / total) * 100).toFixed(2) : "0.00";
+		return `
 			<div class="flex flex-col rounded-sm border border-primary-smoke-10/10 p-4 justify-between h-[120px] premium-survival-gradient">
 				<span class="text-xs font-semibold uppercase tracking-wider text-neutral-text-medium border-b border-primary-smoke-10/10 pb-2">Survivor Outcomes</span>
 				<div class="flex items-center justify-between mt-auto mb-auto w-full px-1">
@@ -55,9 +55,9 @@ SurvivorOutcomes: (stats) => {
 				</div>
 			</div>
 		`;
-},
+	},
 
-KillerSectionHeader: (title, toggleId, arrowId, isExpanded) => `
+	KillerSectionHeader: (title, toggleId, arrowId, isExpanded) => `
 		<header class="flex items-center gap-2 w-full cursor-pointer select-none border-b border-primary-smoke-10/10 pb-2 mb-2" id="${toggleId}-header">
 			<div class="flex items-center gap-3">
 				<svg id="${arrowId}" class="size-4 text-neutral-text-medium transition-transform duration-200 ${!isExpanded ? '-rotate-90' : ''}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
@@ -66,7 +66,7 @@ KillerSectionHeader: (title, toggleId, arrowId, isExpanded) => `
 		</header>
 	`,
 
-MapSectionHeader: (title, toggleId, activeTab, isExpanded) => `
+	MapSectionHeader: (title, toggleId, activeTab, isExpanded) => `
 		<header class="flex items-center justify-between gap-2 w-full cursor-pointer select-none border-b border-primary-smoke-10/10 pb-2 mb-2" id="${toggleId}-header">
 			<div class="flex items-center gap-2">
 				<svg id="unified-maps-arrow" class="size-4 text-neutral-text-medium transition-transform duration-200 ${!isExpanded ? '-rotate-90' : ''}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
