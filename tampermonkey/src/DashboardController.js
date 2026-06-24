@@ -132,11 +132,11 @@ class DashboardController {
 		
 		const isMapsTableTargetingSurvivor = this.state.preferences.filters.mapTab === 'SURVIVOR'
 		const mapsTableHtml = isMapsTableTargetingSurvivor
-		? this.tableCompiler.compile(stats.allSurvMaps, 'surv-map')
-		: this.tableCompiler.compile(stats.allKillerMaps, 'killer-map');
+			? this.tableCompiler.compile(stats.allSurvMaps, 'surv-map')
+			: this.tableCompiler.compile(stats.allKillerMaps, 'killer-map');
 		const mapTableGradient = isMapsTableTargetingSurvivor
-		? 'from-theme-blue-light/40 to-theme-blue-light/0'
-		: 'from-theme-red-light/20 to-theme-red-light/0';
+			? 'from-theme-blue-light/40 to-theme-blue-light/0'
+			: 'from-theme-red-light/20 to-theme-red-light/0';
 		
 		this.container.innerHTML = `
 			<section class="flex w-full flex-col gap-4 border border-primary-smoke-10/10 bg-surface-black/10 rounded-sm overflow-hidden transition-all shadow-xl">
