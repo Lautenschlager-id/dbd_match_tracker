@@ -1,0 +1,13 @@
+node_modules/
+
+content/logs
+content/history.json
+content/env.json
+content/tokens.json
+content/tracker.pid
+
+system/tracker_state.txt
+
+generated_tampermonkey_*.js
+
+package-lock.json

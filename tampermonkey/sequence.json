@@ -1,0 +1,16 @@
+[
+	"meta.js",
+	"storage.js",
+	"DashboardState.js",
+	"DbDMatchAnalytics.js",
+	"DOMObserver.js",
+	"XHRInterceptor.js",
+	"TableCompiler.js",
+	"Modal.js",
+	"MapKillersModal.js",
+	"ClipboardUtils.js",
+	"DashboardController.js",
+	"PaginationController.js",
+	"DbDDashboardApp.js",
+	"init.js"
+]
